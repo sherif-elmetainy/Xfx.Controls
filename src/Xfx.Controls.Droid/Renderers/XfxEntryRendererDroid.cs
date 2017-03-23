@@ -152,6 +152,10 @@ namespace Xfx.Controls.Droid.Renderers
                     100);
             }
             // TODO : Florell, Chase (Contractor) 02/21/17 focus
+            if (Element is XfxEntry entry)
+            {
+                entry.RaiseRendererFocusChanged(args.HasFocus);
+            }
         }
 
         private void SetText()

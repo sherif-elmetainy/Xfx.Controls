@@ -107,6 +107,10 @@ namespace Xfx.Controls.iOS.Renderers
             // TODO : Florell, Chase (Contractor) 02/21/17 unfocus
             _hasFocus = false;
             Control.UnderlineColor = GetUnderlineColorForState();
+            if (Element is XfxEntry entry)
+            {
+                entry.RaiseRendererFocusChanged(_hasFocus);
+            }
         }
 
         private void OnEditingDidBegin(object sender, EventArgs eventArgs)
@@ -114,6 +118,10 @@ namespace Xfx.Controls.iOS.Renderers
             // TODO : Florell, Chase (Contractor) 02/21/17 focus
             _hasFocus = true;
             Control.UnderlineColor = GetUnderlineColorForState();
+            if (Element is XfxEntry entry)
+            {
+                entry.RaiseRendererFocusChanged(_hasFocus);
+            }
         }
 
         private void ViewOnEditingChanged(object sender, EventArgs eventArgs)

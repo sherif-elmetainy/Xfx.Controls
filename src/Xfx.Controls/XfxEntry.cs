@@ -46,5 +46,20 @@ namespace Xfx
         }
 
         protected virtual void OnErrorTextChanged(BindableObject bindable, object oldvalue, object newvalue) { }
+
+        public void RaiseRendererFocusChanged(bool hasFocus)
+        {
+            if (hasFocus)
+            {
+                RendererFocused?.Invoke(this, new FocusEventArgs(this, hasFocus));
+            }
+            else
+            {
+                RendererUnfocused?.Invoke(this, new FocusEventArgs(this, hasFocus));
+            }
+        }
+
+        public event EventHandler<FocusEventArgs> RendererUnfocused;
+        public event EventHandler<FocusEventArgs> RendererFocused;
     }
 }
